@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
 
   // sign in user
   void sendEmailAndPassword() async {
-    // get the auth serviceƒ
+    // get the auth service
     final authService = Provider.of<AuthService>(context, listen: false);
 
     try {
@@ -37,75 +37,78 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 100, horizontal: 30),
-        color: Colors.grey[350],
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.sports_martial_arts_outlined,
-              size: 150,
-              color: Colors.black,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'Korea Taekwondo',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            MyTextFormField(
-              controller: emailController,
-              hintText: 'Email',
-              obscureText: false,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            MyTextFormField(
-              controller: passwordController,
-              hintText: 'Password',
-              obscureText: true,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            MyButtonWidget(
-              func: sendEmailAndPassword,
-              text: 'Sign Up',
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Not a member?',
-                  style: TextStyle(color: Colors.grey),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                GestureDetector(
-                    onTap: () => setState(() {
-                          widget.onTap!();
-                        }),
-                    child: Text(
-                      'Register now',
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
-                    ))
-              ],
-            )
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          padding: EdgeInsets.symmetric(vertical: 100, horizontal: 30),
+          color: Colors.grey[350],
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.sports_martial_arts_outlined,
+                size: 150,
+                color: Colors.black,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                'Korea Taekwondo',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              MyTextFormField(
+                controller: emailController,
+                hintText: 'Email',
+                obscureText: false,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              MyTextFormField(
+                controller: passwordController,
+                hintText: 'Password',
+                obscureText: true,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              MyButtonWidget(
+                func: sendEmailAndPassword,
+                text: 'Sign Up',
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Not a member?',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  GestureDetector(
+                      onTap: () => setState(() {
+                            widget.onTap!();
+                          }),
+                      child: Text(
+                        'Register now',
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      ))
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

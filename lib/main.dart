@@ -1,7 +1,6 @@
 import 'package:chat_app/firebase_options.dart';
-import 'package:chat_app/page/login_and_register.dart';
+import 'package:chat_app/services/auth_gate.dart';
 import 'package:chat_app/services/auth_service.dart';
-import 'package:chat_app/services/test.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,9 +10,11 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  ChangeNotifierProvider(
-    create: (context) => AuthService(),
-    child: const MyApp(),
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => AuthService(),
+      child: const MyApp(),
+    ),
   );
 }
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const TestWidget(),
+      home: AuthGate(),
     );
   }
 }
